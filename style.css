@@ -1,0 +1,273 @@
+/* knightquest styles
+   black and white only, it's just a wireframe lol */
+
+* {
+  box-sizing: border-box; /* so padding doesnt make stuff wider than it should be */
+}
+
+body {
+  font-family: "Courier New", monospace;
+  background: white;
+  color: black;
+  margin: 0;
+  padding: 12px; /* small so phones dont waste space mew */
+}
+
+/* just keeps things centered and not too wide on a big screen */
+.screen {
+  max-width: 400px;
+  min-height: calc(100vh - 24px); /* roughly the whole phone screen based on my calcs nerd emokji*/
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1, h2 {
+  margin-top: 0;
+}
+
+/* plain boxes for stuff i havent made yet (logo and pics). todo: swap for the real ones */
+.box {
+  border: 2px solid black;
+  padding: 10px;
+  margin: 15px 0;
+}
+
+.pic {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* buttons and links that i want to look like buttons */
+button, .button {
+  font-family: inherit;
+  font-size: 16px;
+  display: inline-block;
+  padding: 10px 18px; /* kinda big so thumbs can hit it */
+  border: 2px solid black;
+  background: white;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* greyed out look so players can have intution */
+button:disabled {
+  color: #999;
+  border-color: #999;
+  cursor: not-allowed;
+}
+
+/* the raven is literally just a circle for now im crine i need to source something for that*/
+.raven {
+  width: 90px;
+  height: 90px;
+  margin: 40px auto;
+  border: 2px solid black;
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
+}
+
+/* scroll page thingy thick top and bottom so it kinda looks like a scroll - need to draw */
+.scroll-box {
+  border: 2px solid black;
+  border-top-width: 8px;
+  border-bottom-width: 8px;
+  padding: 15px;
+  margin: 15px 0;
+}
+
+/* map on the home page placeholder for now, todo: my real drawn maps goes here */
+.map {
+  position: relative;
+  height: 170px;
+  margin: 15px 0 5px 0;
+  border: 2px solid black;
+}
+
+.map::before {
+  content: "placeholder map (real one coming later)";
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  font-size: 11px;
+}
+
+.small-note {
+  font-size: 12px;
+  margin-top: 0;
+}
+
+/* the row of seal circles */
+.seal-grid {
+  display: flex;
+  flex-wrap: wrap; /* wraps to a new line if the phone is skinttty */
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.seal {
+  width: 46px;
+  height: 46px;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: black;
+  text-decoration: none;
+}
+
+/* broken seal means filled in black */
+.seal.broken {
+  background: black;
+  color: white;
+}
+
+/* next one to do gets a fat border */
+.seal.next {
+  border-width: 6px;
+}
+
+/* the little back link on the quest page */
+.home-link {
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+  color: black;
+}
+
+/* the big circle you hold down on the seal page */
+.big-seal {
+  width: min(200px, 60vw); /* never wider than 60% of the screen */
+  height: min(200px, 60vw);
+  margin: 20px auto;
+  border: 3px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none; /* stops text getting highlighted when you hold */
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+/* link to the inventory on the home page */
+.inv-link {
+  display: block;
+  text-align: right;
+  margin-bottom: 10px;
+  color: black;
+}
+
+/* inventory page */
+.item-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+/* item placeholders todo: swap for my illustrations */
+.item-circle {
+  width: 72px;
+  height: 72px;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  font-size: 11px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* found = filled in black */
+.item-circle.got {
+  background: black;
+  color: white;
+}
+
+/* the item you just got on the seal page hidden until the seal breaks */
+.item-box {
+  display: none;
+  margin: 15px 0;
+}
+
+.item-box .item-circle {
+  margin: 0 auto;
+}
+
+/* free the prince page */
+.free-seals {
+  position: relative; /* seals are placed inside it with left and top */
+  height: 230px;
+  margin: 10px 0;
+}
+
+.free-seal {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.1;
+  padding: 4px;
+  touch-action: none; /* otherwise the phone tries to scroll or zoom when you press HAHAHAHAHSUHDSHAOUD */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* has an item on it */
+.free-seal.filled {
+  border-width: 5px;
+}
+
+/* finger is on it */
+.free-seal.pressed {
+  background: black;
+  color: white;
+}
+
+.free-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.free-items .item-circle {
+  width: 60px;
+  height: 60px;
+  font-size: 10px;
+  padding: 3px;
+}
+
+/* the items you drag around */
+.drag {
+  position: relative;
+  cursor: grab;
+  touch-action: none; /* stops the page scrolling while you drag AIODJASDKM*/
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>knightquest - home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- navigation home seals are javavavav -->
+<body id="home">
+  <div class="screen">
+    <a class="inv-link" href="inventory.html">inventory &gt;</a>
+
+    <h2>map of the realm</h2>
+
+    <!-- placeholder map!! i'll draw the real one myself later... -->
+    <div class="map" id="map"></div>
+    <p class="small-note">quest locations tbd</p>
+
+    <!-- one circle for each seal -->
+    <div class="seal-grid" id="seal-grid"></div>
+
+    <p id="seals-left">5 seals remain</p>
+
+    <button id="free-btn" disabled>free the prince</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,14 +1,25 @@
-/* knightquest styles
-   black and white only, it's just a wireframe lol */
+/* NOTE: i used help from my cousin het patel who does CS professionally to teach
+me how to troubleshoot and do some of my code :3
+
+not black and white anymore!!
+almendra from google fonts, medieval but still easy to read on a phone */
+
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400&display=swap');
 
 * {
   box-sizing: border-box; /* so padding doesnt make stuff wider than it should be */
 }
 
+html {
+  min-height: 100%;
+}
+
 body {
-  font-family: "Courier New", monospace;
-  background: white;
-  color: black;
+  font-family: "Almendra", "Courier New", monospace;
+  font-size: 18px;
+  line-height: 1.4;
+  background: #eadcb8 url("assets/background.png") center / cover fixed; /* parchment */
+  color: #2b1d14;
   margin: 0;
   padding: 12px; /* small so phones dont waste space mew */
 }
@@ -17,85 +28,264 @@ body {
 .screen {
   max-width: 400px;
   min-height: calc(100vh - 24px); /* roughly the whole phone screen based on my calcs nerd emokji*/
+  min-height: calc(100dvh - 24px); /* same thing but dvh doesnt count the phone's address bar bc the page startin to scroll */
   margin: 0 auto;
   text-align: center;
+
+  /* centers everything up and down and left and right so its not stuck at the top */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px; /*spacing stuufff*/
+  position: relative;
+}
+
+/* the big stuff stretches the whole width, everything else just sits in the middle */
+.logo, .box, .scroll-box, .seal-grid, .item-grid, .free-seals, .free-items {
+  width: 100%;
+}
+
+/* pages with a link up top get a little room for it */
+#home .screen, #quest .screen, #inventory .screen {
+  padding-top: 56px;
+}
+
+/* body text spacin */
+p {
+  margin: 0;
 }
 
 h1, h2 {
   margin-top: 0;
+  margin-bottom: 0; /* titles sit close to the text under them */
+  color: #8f1f2e;
+  font-weight: bold;
 }
 
-/* plain boxes for stuff i havent made yet (logo and pics). todo: swap for the real ones */
+#seals-left, #item-count {
+  font-weight: bold;
+}
+
+/* every picture stays inside the screen */
+img {
+  max-width: 100%;
+}
+
+/* plain boxes for stuff i havent made yet (logo and pics).DONENENENENE */
 .box {
-  border: 2px solid black;
+  border: 2px solid #8f1f2e;
   padding: 10px;
   margin: 15px 0;
 }
 
 .pic {
-  height: 140px;
+  min-height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* buttons and links that i want to look like buttons */
+
+.prince-pic {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 15px auto;
+}
+
+#quest-pic {
+  padding: 0;
+  overflow: hidden;
+  width: auto; /* border hugs the pic */
+  max-width: 100%;
+}
+
+/* tryna make it so clue and button still fit on a phone */
+#quest-pic img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 30vh;
+  max-height: 30dvh;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 10px auto;
+}
+
+/* the end pic on the end page change the width if its too big or small */
+.end-pic {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* they are all pictures now so no border or padding the picture is the button */
 button, .button {
   font-family: inherit;
   font-size: 16px;
   display: inline-block;
-  padding: 10px 18px; /* kinda big so thumbs can hit it */
-  border: 2px solid black;
-  background: white;
-  color: black;
+  padding: 0; /* kinda big so thumbs can hit it */
+  border: none;
+  background: none;
+  color: inherit;
   text-decoration: none;
   cursor: pointer;
 }
 
+/* change this number if the buttons look too big or small */
+button img, .button img {
+  display: block;
+  width: 220px;
+  height: auto;
+}
+
+/* the main button on each page sits a little further down from the stuff above it */
+.screen > button, .screen > .button {
+  margin-top: 20px;
+}
+
 /* greyed out look so players can have intution */
 button:disabled {
-  color: #999;
-  border-color: #999;
   cursor: not-allowed;
 }
 
-/* the raven is literally just a circle for now im crine i need to source something for that*/
+button:disabled img {
+  filter: grayscale(1);
+  opacity: 0.45;
+}
+
+/* for buttons that dont have a picture (seal already broken)
+ill make these before final submission */
+.text-button {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 18px;
+  border: 2px solid #8f1f2e;
+  background: #8f1f2e;
+  color: #f4e8c8;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.text-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ugly ass raven thing i cant stop laughing at */
 .raven {
-  width: 90px;
-  height: 90px;
+  display: block;
+  width: 200px;
   margin: 40px auto;
-  border: 2px solid black;
-  border-radius: 50%; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
   text-decoration: none;
 }
 
-/* scroll page thingy thick top and bottom so it kinda looks like a scroll - need to draw */
-.scroll-box {
-  border: 2px solid black;
-  border-top-width: 8px;
-  border-bottom-width: 8px;
-  padding: 15px;
-  margin: 15px 0;
+.raven img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-/* map on the home page placeholder for now, todo: my real drawn maps goes here */
+/* replaced the entire screen with the one i designed for the decree */
+#scroll-page {
+  padding: 0;
+}
+
+#scroll-page .screen {
+  max-width: 450px;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.scroll-box {
+  position: relative;
+}
+
+/* makes it fit the phone screen without scrolling */
+#scroll-page .scroll-box {
+  width: min(100%, calc(100vh * 0.45));
+  width: min(100%, calc(100dvh * 0.45));
+}
+
+.scroll-box > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.scroll-box .button {
+  position: absolute;
+  left: 50%;
+  top: 82%; /* move this if the button isnt in the empty spot */
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  width: 50%; /* so it stays inside it on any phone */
+  height: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* the accept button pic shrinks to fit that spot */
+.scroll-box .button img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* my maps hehehe that took me eons oml */
 .map {
   position: relative;
-  height: 170px;
   margin: 15px 0 5px 0;
-  border: 2px solid black;
+  border: 3px solid #8f1f2e;
 }
 
-.map::before {
-  content: "placeholder map (real one coming later)";
-  position: absolute;
-  top: 4px;
-  left: 6px;
-  font-size: 11px;
+/* the map border hugs the pics*/
+.map > img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 40vh;
+  max-height: 40dvh;
+}
+
+/* tap the map to make it bigger */
+.map {
+  cursor: zoom-in;
+}
+
+.map-zoom {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(43, 29, 20, 0.92);
+  color: #f4e8c8;
+  cursor: zoom-out;
+}
+
+.map-zoom img {
+  max-width: 100%;
+  max-height: calc(100% - 40px); /* leaves room for the words under it */
+  object-fit: contain;
 }
 
 .small-note {
@@ -113,47 +303,48 @@ button:disabled {
 }
 
 .seal {
-  width: 46px;
-  height: 46px;
-  border: 2px solid black;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: black;
-  text-decoration: none;
+  width: 56px;
+  height: 56px;
+  display: block;
 }
 
-/* broken seal means filled in black */
+.seal img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* its the broken seal pic now (script.js swaps it) so just a little faded */
 .seal.broken {
-  background: black;
-  color: white;
+  opacity: 0.8;
 }
 
-/* next one to do gets a fat border */
+
 .seal.next {
-  border-width: 6px;
+  transform: scale(1.2);
 }
 
-/* the little back link on the quest page */
+/* home back button */
 .home-link {
   display: block;
   text-align: left;
   margin-bottom: 10px;
-  color: black;
+  color: #2b1d14;
+  position: absolute; /* stays up in the top corner while everything else is centered */
+  top: 0;
+  left: 0;
 }
 
-/* the big circle you hold down on the seal page */
+.home-link img, .inv-link img {
+  width: 100px;
+  height: auto;
+}
+
 .big-seal {
-  width: min(200px, 60vw); /* never wider than 60% of the screen */
-  height: min(200px, 60vw);
+  width: min(240px, 60vw); /* never wider than 60% of the screen */
+  height: min(240px, 60vw);
   margin: 20px auto;
-  border: 3px solid black;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   user-select: none; /* stops text getting highlighted when you hold */
   -webkit-user-select: none;
@@ -161,15 +352,29 @@ button:disabled {
   touch-action: manipulation;
 }
 
+.big-seal img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none; /* so the press goes to the circle and not the picture */
+}
+
 /* link to the inventory on the home page */
 .inv-link {
   display: block;
   text-align: right;
   margin-bottom: 10px;
-  color: black;
+  color: #2b1d14;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-/* inventory page */
+.inv-link img {
+  margin-left: auto;
+}
+
+/* invt page */
 .item-grid {
   display: flex;
   flex-wrap: wrap;
@@ -178,73 +383,86 @@ button:disabled {
   margin: 15px 0;
 }
 
-/* item placeholders todo: swap for my illustrations */
 .item-circle {
   width: 72px;
   height: 72px;
-  border: 2px solid black;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
-  font-size: 11px;
-  line-height: 1.1;
-  text-align: center;
+}
+
+/* the item pics never get clicked the box around them does */
+.item-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 /* found = filled in black */
-.item-circle.got {
-  background: black;
-  color: white;
+/* not found yet = dark shadow of the item */
+.item-circle.locked img {
+  filter: brightness(0);
+  opacity: 0.3;
+}
+
+.item-grid .item-circle {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.item-desc {
+  min-height: 3em;
 }
 
 /* the item you just got on the seal page hidden until the seal breaks */
 .item-box {
-  display: none;
+  visibility: hidden; /* still takes up room so the seal doesnt jump around when the item shows up */
+  min-height: 260px;
   margin: 15px 0;
 }
 
 .item-box .item-circle {
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
 }
 
 /* free the prince page */
 .free-seals {
   position: relative; /* seals are placed inside it with left and top */
-  height: 230px;
+  height: 290px;
   margin: 10px 0;
 }
 
 .free-seal {
   position: absolute;
-  width: 64px;
-  height: 64px;
+  width: 84px;
+  height: 84px;
   transform: translate(-50%, -50%);
-  border: 2px solid black;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 10px;
-  line-height: 1.1;
-  padding: 4px;
   touch-action: none; /* otherwise the phone tries to scroll or zoom when you press HAHAHAHAHSUHDSHAOUD */
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
 
-/* has an item on it */
-.free-seal.filled {
-  border-width: 5px;
+.free-seal img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
 }
 
-/* finger is on it */
-.free-seal.pressed {
-  background: black;
-  color: white;
+/* the item that sits on top of the seal */
+.free-seal img.seal-item {
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
 }
 
 .free-items {
@@ -256,17 +474,15 @@ button:disabled {
 }
 
 .free-items .item-circle {
-  width: 60px;
-  height: 60px;
-  font-size: 10px;
-  padding: 3px;
+  width: 70px;
+  height: 70px;
 }
 
 /* the items you drag around */
 .drag {
   position: relative;
   cursor: grab;
-  touch-action: none; /* stops the page scrolling while you drag AIODJASDKM*/
+  touch-action: none; /* stops the page scrolling while you drag AIODJASDKM PLS WORK*/
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;

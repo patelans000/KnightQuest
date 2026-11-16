@@ -3,27 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>knightquest - home</title>
+  <title>Knightquest - Home</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <!-- navigation home seals are javavavav -->
 <body id="home">
   <div class="screen">
-    <a class="inv-link" href="inventory.html">inventory &gt;</a>
-
-    <h2>map of the realm</h2>
+    <a class="inv-link" href="inventory.html"><img src="assets/inventorybutton.png" alt="inventory"></a>
 
     <!-- placeholder map!! i'll draw the real one myself later... -->
     <div class="map" id="map"></div>
-    <p class="small-note">quest locations tbd</p>
 
     <!-- one circle for each seal -->
     <div class="seal-grid" id="seal-grid"></div>
 
     <p id="seals-left">5 seals remain</p>
 
-    <button id="free-btn" disabled>free the prince</button>
+    <!-- the big map hidden until you tap the map -->
+    <div class="map-zoom" id="map-zoom">
+      <img id="map-zoom-img" alt="map of the realm, enlarged">
+    </div>
+
+    <button id="free-btn" disabled><img src="assets/freetheprincebutton.png" alt="free the prince"></button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
